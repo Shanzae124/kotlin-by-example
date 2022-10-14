@@ -5,20 +5,25 @@ the primary constructor etc.) and the class body, surrounded by curly braces.
 Both the header and the body are optional; if the class has no body, curly braces can be omitted.
 
 ```run-kotlin
-class Customer                                  // 1
+class Customer( val name: String) {
+    fun displayName(){
+        println("Name Of The Customer ${name}")
+    }
+}                                 
 
-class Contact(val id: Int, var email: String)   // 2
+class Contact(val id: Int, var email: String,val ph_Number:String){
+    fun displayCustomerDetails(){
+        println("id of the customer ${id} \nEmail Of The Customer ${email} \nPhone number of the customer ${ph_Number}")
+    }
+}
 
 fun main() {
 
-    val customer = Customer()                   // 3
-    
-    val contact = Contact(1, "mary@gmail.com")  // 4
-
-    println(contact.id)                         // 5
-    contact.email = "jane@gmail.com"            // 6
-}
-```
+    val customer = Customer("XYZ")                   // 3
+    customer.displayName()
+    val contact = Contact(1, "mary@gmail.com" , "0345678321")
+    contact.displayCustomerDetails()
+}```
 
 1. Declares a class named `Customer` without any properties or user-defined constructors. A non-parameterized default constructor is created by Kotlin automatically.
 2. Declares a class with two properties: immutable `id` and mutable `email`, and a constructor with two parameters `id` and `email`.
